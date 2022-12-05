@@ -1,2 +1,2 @@
-# simple-search-engine
+# medisearch-api
 Information Retrieval
