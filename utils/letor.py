@@ -142,11 +142,10 @@ class PretrainedModel(CorpusDocuments, CorpusQuery):
         {CorpusDocuments.__str__(self)} 
         {CorpusQuery.__str__(self)}'''
 
-class Ranker(PretrainedModel):
+class Ranker():
 
     @staticmethod
-    async def get_documents(query: str) -> list:
-        model = PretrainedModel()
+    async def get_documents(model: PretrainedModel,query: str) -> list:
         return model.get_documents(query)[:2]
     
 
