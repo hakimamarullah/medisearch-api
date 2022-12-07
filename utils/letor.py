@@ -146,7 +146,7 @@ class Ranker():
 
     @staticmethod
     async def get_documents(model: PretrainedModel,query: str) -> list:
-        return model.get_documents(query)[:2]
+        return model.get_documents(query)
     
 
 

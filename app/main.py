@@ -2,6 +2,8 @@ from fastapi import FastAPI, status
 from utils.letor import Ranker
 from fastapi.middleware.cors import CORSMiddleware
 from utils.letor import PretrainedModel
+from fastapi_pagination import Page, paginate, add_pagination
+from model.search_response import SearchResponse
 import time
 app = FastAPI()
 model = None
@@ -29,9 +31,11 @@ async def root():
         "code": status.HTTP_200_OK
     }
 
-@app.get("/search", status_code=status.HTTP_200_OK)
+@app.get("/search", response_model=Page[SearchResponse], status_code=status.HTTP_200_OK)
 async def search(q: str):
-    start_time = time.process_time()
     result = await Ranker.get_documents(model, query=q) if len(q) != 0 else []
-    return {"query_time":time.process_time() - start_time,"message": "success", "data": result}
+    return paginate(result)
+
+
+add_pagination(app)
 
