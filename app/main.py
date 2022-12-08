@@ -8,7 +8,8 @@ import time
 app = FastAPI()
 model = None
 origins = [
-    "http://localhost"
+    "http://localhost:3000",
+    "https://medisearchengine.netlify.app"
 ]
 
 @app.on_event('startup')
