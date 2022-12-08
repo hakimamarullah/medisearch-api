@@ -25,5 +25,5 @@ or you can pull the image from docker registry using this command:\
 `docker pull hakimamarullah/medisearch:latest`
 
 
-### How to run using docker container in detached mode:\
+### How to run using docker container in detached mode:
 `docker run --name $container_name -p $port:80 --restart $restart-policy -d hakimamarullah/medisearch:latest`
